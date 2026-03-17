@@ -6,6 +6,8 @@ y = np.sin(x)
 
 plt.yticks([1,0,-1]) #marcação do eixo y
 plt.axhline(y=0, color='black', linewidth=1) #marcação do eixo x
+
+plt.subplot(4,1, 1)
 plt.plot(x, y, label='Function whitout noise') #plotagem da função
 plt.legend() #legenda
 plt.savefig('nonoise.png')
