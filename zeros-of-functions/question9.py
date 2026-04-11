@@ -11,7 +11,7 @@ def bissection_method(a, b, precision):
     #step one: check the sign of f(a) and f(b)
     # Base case: if f(a) and f(b) have the same sign, then there is no root in the interval [a, b]
     if abs(b - a) < precision:
-        #print("The root is approximately: ", (a + b) / 2)
+        print("The root is approximately: ", (a + b) / 2)
         return (a + b) / 2
 
     m = (a+b)/2
@@ -48,7 +48,7 @@ def newthon_method(x, precision):
 
         x = next_x
 
-newthon_method(2, precision)
+newthon_method(-2, precision)
 
 #3. secant method
 
@@ -56,7 +56,7 @@ def secant_method(a, b, precision):
 
     while True:
     
-        next_x = a - (f(a)/((f(a))-f(b))/(a-b)) # calc next x
+        next_x = a - ( ( f(a)/ ((f(a)-f(b))/(a-b)) ) ) # calc next x
 
         #stopped if
         if abs(next_x -b) < precision:
@@ -64,3 +64,27 @@ def secant_method(a, b, precision):
             break
 
         a, b = b, next_x
+
+
+secant_method(-2, 3, precision)
+
+#4. false position method
+
+def false_position_method(a, b, precision):
+        
+    if f(a) * f(b) >= 0:
+        return None
+    
+    while True:
+        next_x = a - ( ( f(a)/ ((f(a)-f(b))/(a-b)) ) ) # calc next x
+
+        #stopped if
+        if abs(f(next_x)) < precision:
+            print("The root is approximately: ", next_x)
+            break 
+        if f(a) * f(next_x) < 0:
+            b = next_x  #left
+        else:
+            a = next_x  # right
+
+false_position_method(-2, 5, precision)
