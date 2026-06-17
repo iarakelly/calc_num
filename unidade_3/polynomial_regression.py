@@ -20,13 +20,11 @@ def gauss_jordan(M):
             if i != j:
                 M[j] = M[j] - M[j, i] * M[i]
     
-    # A solução está na última coluna
     return M[:, -1]
 
 x = np.sort(np.random.randint(0, 100, 100))
 
 y = 2*x**2 - 3*x + 5 + np.random.normal(0, 1200, len(x))
-
 
 #aproximar de uma função p(x)=ax^2+bx+c
 
@@ -72,12 +70,11 @@ c = coef[2]
 
 print(f"p(x) = {a:.4f}x² + {b:.4f}x + {c:.4f}")
 
-x_plot = np.linspace(min(x), max(x), 1000)
-
-y_reg = a*x_plot**2 + b*x_plot + c
+y_reg = a*x**2 + b*x + c
 
 plt.scatter(x, y, label="Dados")
-plt.plot(x_plot, y_reg, label="Regressão")
+plt.plot(x, y_reg, label="Regressão")
 
 plt.legend()
+plt.savefig("unidade_3/polynomial_regression.png")
 plt.show()
